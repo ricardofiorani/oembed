@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+index.php
+composer.lock
+Dockerfile
+vendor
+.phpunit.result.cache
+docker-compose.yml
+ultimate-test.php
