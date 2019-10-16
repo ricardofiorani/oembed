@@ -1,20 +1,19 @@
-# PHP Video URL Parser
-[![Build Status](https://api.travis-ci.org/ricardofiorani/php-video-url-parser.svg?branch=master)](http://travis-ci.org/ricardofiorani/php-video-url-parser)
+# Video OEmbed
+[![Build Status](https://api.travis-ci.org/ricardofiorani/video-oembed.svg?branch=master)](http://travis-ci.org/ricardofiorani/video-oembed)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
-[![License](https://poser.pugx.org/ricardofiorani/php-video-url-parser/license.png)](https://packagist.org/packages/ricardofiorani/php-video-url-parser)
-[![Total Downloads](https://poser.pugx.org/ricardofiorani/php-video-url-parser/d/total.png)](https://packagist.org/packages/ricardofiorani/php-video-url-parser)
+[![License](https://poser.pugx.org/ricardofiorani/video-oembed/license.png)](https://packagist.org/packages/ricardofiorani/video-oembed)
+[![Total Downloads](https://poser.pugx.org/ricardofiorani/video-oembed/d/total.png)](https://packagist.org/packages/ricardofiorani/video-oembed)
 [![Coding Standards](https://img.shields.io/badge/cs-PSR--4-yellow.svg)](https://github.com/php-fig-rectified/fig-rectified-standards)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ricardofiorani/php-video-url-parser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ricardofiorani/php-video-url-parser/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/ricardofiorani/php-video-url-parser/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ricardofiorani/php-video-url-parser/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ricardofiorani/video-oembed/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ricardofiorani/video-oembed/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/ricardofiorani/video-oembed/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ricardofiorani/video-oembed/?branch=master)
 
-PHP Video URL Parser is a parser that detects a given video url and returns an object containing information like the video's embed code, title, description, thumbnail and other information that the service's API may give.
-
+Video OEmbed is a PHP library to assist you retrieve usual video informations such as embed codes, title, description, thumbnail and other informations from the most well-known video platforms and services.
 ## Installation
 
 Install the latest version with
 
 ```bash
-$ composer require ricardofiorani/php-video-url-parser
+$ composer require ricardofiorani/video-oembed
 ```
 
 ## Requirements
@@ -26,15 +25,15 @@ $ composer require ricardofiorani/php-video-url-parser
 
 ```php
 <?php
-use RicardoFiorani\VideoAdapter\Builder\VideoAdapterBuilder;
+use RicardoFiorani\VideoAdapter\Service\VideoAdapterBuilder;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$vsm = new VideoAdapterBuilder();
+$builder = new VideoAdapterBuilder();
 
 //Detects which service the url belongs to and returns the service's implementation
 //of RicardoFiorani\Adapter\VideoAdapterInterface
-$video = $vsm->buildFromURL('https://www.youtube.com/watch?v=PkOcm_XaWrw');
+$video = $builder->buildFromURL('https://www.youtube.com/watch?v=PkOcm_XaWrw');
 
 //Checks if service provides embeddable videos (most services does)
 if ($video->isEmbeddable()) {
@@ -66,12 +65,12 @@ echo $video->getLargestThumbnail();
 ## Registering your own service video (it's easy !)
 If you want to register an implementation of some service your class just needs to implement the "RicardoFiorani\Adapter\VideoAdapterInterface" or extend the RicardoFiorani\Adapter\AbstractServiceAdapter
 
-A Fully functional example can be found [Here](https://github.com/ricardofiorani/php-video-url-parser/tree/master/documentation/RegisteringANewService.md).
+A Fully functional example can be found [Here](https://github.com/ricardofiorani/video-oembed/tree/master/documentation/RegisteringANewService.md).
 
 PS: If you've made your awesome implementation of some well known service, feel free to send a Pull Request. All contributions are welcome :)
 
 ## Using your own framework's template engine
-A Fully functional example can be found [Here](https://github.com/ricardofiorani/php-video-url-parser/tree/master/documentation/IntegratingYourOwnRenderer.md).
+A Fully functional example can be found [Here](https://github.com/ricardofiorani/video-oembed/tree/master/documentation/IntegratingYourOwnRenderer.md).
 
 
 ## Currently Suported Services

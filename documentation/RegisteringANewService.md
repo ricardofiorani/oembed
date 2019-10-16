@@ -173,7 +173,7 @@ class DailymotionServiceAdapterFactory implements \RicardoFiorani\VideoAdapter\C
 
 ```php
 <?php
-use RicardoFiorani\VideoAdapter\Builder\VideoAdapterBuilder;
+use RicardoFiorani\VideoAdapter\Service\VideoAdapterBuilder;
 
 require __DIR__ . '/vendor/autoload.php';
 

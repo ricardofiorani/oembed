@@ -58,7 +58,7 @@ The last part is attaching your own renderer service to the VideoAdapterBuilder,
 ```php
 <?php declare(strict_types=1);
 
-use RicardoFiorani\VideoAdapter\Builder\VideoAdapterBuilder;
+use RicardoFiorani\VideoAdapter\Service\VideoAdapterBuilder;
 
 require __DIR__ . '/vendor/autoload.php';
 
