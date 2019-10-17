@@ -3,7 +3,9 @@
 namespace RicardoFiorani\OEmbed\Result\Factory;
 
 use Psr\Http\Message\UriInterface;
+use RicardoFiorani\OEmbed\Exception\HttpAdapterException;
 use RicardoFiorani\OEmbed\Exception\InvalidResultTypeException;
+use RicardoFiorani\OEmbed\Http\HttpAdapter;
 use RicardoFiorani\OEmbed\Provider\ProviderInterface;
 use RicardoFiorani\OEmbed\Result\LinkResult;
 use RicardoFiorani\OEmbed\Result\PhotoResult;
@@ -14,21 +16,45 @@ use RicardoFiorani\OEmbed\Result\VideoResult;
 
 class ResultFactory
 {
+    private const DEFAULT_HTTP_METHOD = 'GET';
+    private HttpAdapter $httpAdapter;
+
+    public function __construct(HttpAdapter $httpAdapter)
+    {
+        $this->httpAdapter = $httpAdapter;
+    }
+
     /**
      * @throws InvalidResultTypeException
+     * @throws HttpAdapterException
      */
-    public function build(ProviderInterface $service, UriInterface $uri): ResultInterface
+    public function build(ProviderInterface $service, UriInterface $uri, array $extraParameters = []): ResultInterface
     {
-        $data = $this->fetchData($service, $uri);
+        $data = $this->fetchData($service, $uri, $extraParameters);
 
         return $this->buildResultFromData($data);
     }
 
-    private function fetchData(ProviderInterface $service, UriInterface $uri): array
+    /**
+     * @throws HttpAdapterException
+     */
+    private function fetchData(ProviderInterface $service, UriInterface $uri, array $extraParameters = []): array
     {
-        $endpointCall = $service->getEndpoint()->getUrl() . '?url=' . urlencode((string)$uri);
+        $query = [
+            'url' => (string)$uri,
+            'format' => 'json',
+        ];
 
-        return json_decode(file_get_contents($endpointCall), true);
+        $endpointCall = $this
+            ->httpAdapter
+            ->getUriFactory()
+            ->createUri($service->getEndpoint()->getUrl())
+            ->withQuery(http_build_query($query + $extraParameters));
+
+        return $this->httpAdapter->getJsonResponseAsArray(
+            self::DEFAULT_HTTP_METHOD,
+            (string)$endpointCall
+        );
     }
 
     /**
@@ -38,7 +64,7 @@ class ResultFactory
     {
         $state = new State(
             $data['type'],
-            $data['version'],
+            (string)$data['version'], //Apparently each provider decides between string and float...
             $data['title'] ?? null,
             $data['author_name'] ?? null,
             $data['author_url'] ?? null,
@@ -46,34 +72,34 @@ class ResultFactory
             $data['provider_url'] ?? null,
             $data['cache_age'] ?? null,
             $data['thumbnail_url'] ?? null,
-            $data['thumbnail_width'] ?? null,
-            $data['thumbnail_height'] ?? null,
+            isset($data['thumbnail_width']) ? (int)$data['thumbnail_width'] : null,
+            isset($data['thumbnail_height']) ? (int)$data['thumbnail_height'] : null,
             $data,
         );
 
         switch ($state->getType()) {
             case PhotoResult::TYPE:
                 return new PhotoResult(
-                    $data['url'],
-                    $data['width'],
-                    $data['height'],
-                    $state
+                    (string)$data['url'],
+                    (int)$data['width'],
+                    (int)$data['height'],
+                    $state,
                 );
-            case  VideoResult::TYPE:
+            case VideoResult::TYPE:
                 return new VideoResult(
-                    $data['html'],
-                    $data['width'],
-                    $data['height'],
-                    $state
+                    (string)$data['html'],
+                    (int)$data['width'],
+                    (int)$data['height'],
+                    $state,
                 );
             case LinkResult::TYPE:
                 return new LinkResult($state);
             case RichResult::TYPE:
                 return new RichResult(
-                    $data['html'],
-                    $data['width'],
-                    $data['height'],
-                    $state
+                    $state,
+                    (string)$data['html'],
+                    (int)$data['width'],
+                    (int)$data['height'],
                 );
             default:
                 throw new InvalidResultTypeException(

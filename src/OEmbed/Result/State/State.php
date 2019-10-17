@@ -112,6 +112,8 @@ class State
                 "{$key} is not a valid key in this response"
             );
         }
+
+        return (string)$this->extraMetadata[$key];
     }
 
     public function hasMetadata(string $key): bool

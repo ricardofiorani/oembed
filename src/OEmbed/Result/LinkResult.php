@@ -20,7 +20,7 @@ class LinkResult extends AbstractResult
 
     public function __toString(): string
     {
-        switch(true){
+        switch (true) {
             case $this->hasMetadata('link'):
                 return $this->getMetaData('link');
             case $this->hasMetadata('url'):

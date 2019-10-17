@@ -8,15 +8,19 @@ class RichResult extends AbstractResult
 {
     public const TYPE = 'rich';
     private string $html;
-    private int $width;
-    private int $height;
+    private ?int $width;
+    private ?int $height;
 
-    public function __construct(string $html, int $width, int $height, State $state)
+    /**
+     * Even though the OEmbed format specifies for type "Rich" the width and height are REQUIRED,
+     * Facebook doesn't comply so we null it in here :shrug:
+     */
+    public function __construct(State $state, string $html, int $width = null, int $height = null)
     {
+        $this->setState($state);
         $this->html = $html;
         $this->width = $width;
         $this->height = $height;
-        $this->setState($state);
     }
 
     public function getType(): string
@@ -29,12 +33,12 @@ class RichResult extends AbstractResult
         return $this->html;
     }
 
-    public function getWidth(): int
+    public function getWidth(): ?int
     {
         return $this->width;
     }
 
-    public function getHeight(): int
+    public function getHeight(): ?int
     {
         return $this->height;
     }

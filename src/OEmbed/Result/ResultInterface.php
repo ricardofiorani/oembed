@@ -7,7 +7,7 @@ use RicardoFiorani\OEmbed\Exception\InvalidMetadataKeyException;
 interface ResultInterface
 {
     /**
-     * @throws \RicardoFiorani\OEmbed\Exception\InvalidMetadataKeyException
+     * @throws InvalidMetadataKeyException
      */
     public function getMetaData(string $key): string;
 

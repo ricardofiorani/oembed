@@ -2,17 +2,17 @@
 
 namespace RicardoFioraniTests\Integration;
 
-use GuzzleHttp\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
 use RicardoFiorani\OEmbed\Result\VideoResult;
-use RicardoFiorani\OEmbed\Service;
+use RicardoFioraniTests\Integration\Traits\IntegrationTestTrait;
 
-class YoutubeIntegrationTest extends TestCase
+class YoutubeTest extends TestCase
 {
+    use IntegrationTestTrait;
+
     public function testYoutube(): void
     {
-        $service = new Service();
-        $result = $service->build(new Uri('https://www.youtube.com/watch?v=WMBNHy1C4eY'));
+        $result = $this->getOEmbedResult('https://www.youtube.com/watch?v=WMBNHy1C4eY');
 
         TestCase::assertInstanceOf(VideoResult::class, $result);
         TestCase::assertEquals('YouTube', $result->getProviderName());
