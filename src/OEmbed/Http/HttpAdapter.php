@@ -33,7 +33,7 @@ class HttpAdapter
         $request = $this->requestFactory->createRequest(
             $method,
             $this->uriFactory->createUri($uri)
-        );
+        )->withHeader('User-agent', 'php-oembed-client v1.0');
 
         try {
             return $this->client->sendRequest($request);
