@@ -37,6 +37,7 @@ class ProviderFactory
      */
     private function findProviderConfig(UriInterface $uri): array
     {
+        var_dump($this->getConfig());
         foreach ($this->getConfig() as $serviceConfig) {
             foreach ((array)$serviceConfig['endpoints'] as $endpoint) {
                 foreach ((array)$endpoint['schemes'] as $scheme) {
