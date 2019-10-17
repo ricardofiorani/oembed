@@ -79,19 +79,22 @@ class ResultFactory
             $data,
         );
 
+        $width = (int)($data['width'] ?? null);
+        $height = (int)($data['height'] ?? null);
+
         switch ($state->getType()) {
             case PhotoResult::TYPE:
                 return new PhotoResult(
                     (string)$data['url'],
-                    (int)$data['width'],
-                    (int)$data['height'],
+                    $width,
+                    $height,
                     $state,
                 );
             case VideoResult::TYPE:
                 return new VideoResult(
                     (string)$data['html'],
-                    (int)$data['width'],
-                    (int)$data['height'],
+                    $width,
+                    $height,
                     $state,
                 );
             case LinkResult::TYPE:
@@ -100,8 +103,8 @@ class ResultFactory
                 return new RichResult(
                     $state,
                     (string)$data['html'],
-                    (int)$data['width'],
-                    (int)$data['height'],
+                    $width,
+                    $height,
                 );
             default:
                 throw new InvalidResultTypeException(
