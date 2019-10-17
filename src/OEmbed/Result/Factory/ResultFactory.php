@@ -36,6 +36,8 @@ class ResultFactory
     }
 
     /**
+     * TODO FIND OUT WHY REDIRECTS ARE NOT FOLLOWED
+     *gi
      * @throws HttpAdapterException
      */
     private function fetchData(ProviderInterface $service, UriInterface $uri, array $extraParameters = []): array
@@ -63,8 +65,8 @@ class ResultFactory
     private function buildResultFromData(array $data): ResultInterface
     {
         $state = new State(
-            $data['type'],
-            (string)$data['version'], //Apparently each provider decides between string and float...
+            (string)($data['type'] ?? null),
+            (string)($data['version'] ?? null), //Apparently each provider decides between string and float...
             $data['title'] ?? null,
             $data['author_name'] ?? null,
             $data['author_url'] ?? null,

@@ -89,11 +89,12 @@ class ProviderFactory
         return $this->config = $this->configLoader->load();
     }
 
-    /**
-     * TODO FIND OUT WHY REDIRECTS ARE NOT FOLLOWED
-     */
     private function getEndpoint($providerConfig): EndpointInterface
     {
+        $schemes = (array) ($providerConfig['endpoint_used']['schemes'] ?? null);
+        $endpointUrl = $providerConfig['endpoint_used']['url'];
+        $discovery = (bool)($providerConfig['endpoint_used']['discovery'] ?? null);
+
         switch (true) {
             case in_array(
                 $providerConfig['provider_name'],
@@ -101,9 +102,9 @@ class ProviderFactory
                 false
             ):
                 return new SlashEndingEndpoint(
-                    $providerConfig['endpoint_used']['schemes'],
-                    $providerConfig['endpoint_used']['url'],
-                    (bool)$providerConfig['endpoint_used']['discovery']
+                    $schemes,
+                    $endpointUrl,
+                    $discovery
                 );
             case in_array(
                 $providerConfig['provider_name'],
@@ -111,15 +112,15 @@ class ProviderFactory
                 false
             ):
                 return new SlashlessEndingEndpoint(
-                    $providerConfig['endpoint_used']['schemes'],
-                    $providerConfig['endpoint_used']['url'],
-                    (bool)$providerConfig['endpoint_used']['discovery']
+                    $schemes,
+                    $endpointUrl,
+                    $discovery
                 );
             default:
                 return new GenericEndpoint(
-                    $providerConfig['endpoint_used']['schemes'],
-                    $providerConfig['endpoint_used']['url'],
-                    (bool)$providerConfig['endpoint_used']['discovery']
+                    $schemes,
+                    $endpointUrl,
+                    $discovery
                 );
         }
     }
