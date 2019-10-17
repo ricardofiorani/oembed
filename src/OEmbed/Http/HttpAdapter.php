@@ -72,7 +72,6 @@ STRING
             );
         }
 
-//        var_dump($uri, $responseBody); die;
         try {
             return json_decode($responseBody, true, JSON_THROW_ON_ERROR);
         } catch (\JsonException $exception) {
