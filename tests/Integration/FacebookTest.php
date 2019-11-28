@@ -18,7 +18,7 @@ class FacebookTest extends TestCase
 
     public function testPost(): void
     {
-        $result = $this->getOEmbedResult('https://www.facebook.com/FacebookDeutschland/posts/10157224799975932');
+        $result = $this->getOEmbedResult('https://www.facebook.com/deutschland.de/posts/10157828150787351');
 
         self::assertEquals('rich', $result->getType());
     }
