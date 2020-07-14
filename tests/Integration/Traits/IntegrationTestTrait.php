@@ -2,7 +2,9 @@
 
 namespace RicardoFioraniTests\Integration\Traits;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Uri;
+use Http\Adapter\Guzzle6\Client as HttpClient;
 use RicardoFiorani\OEmbed\OEmbed;
 use RicardoFiorani\OEmbed\Result\ResultInterface;
 
@@ -16,7 +18,11 @@ trait IntegrationTestTrait
             return $this->service->get(new Uri($uri));
         }
 
-        $this->service = new OEmbed();
+        //Please note that most services require you to follow redirects
+        $guzzle = new Client();
+        $httpClient = new HttpClient($guzzle);
+
+        $this->service = new OEmbed($httpClient);
 
         return $this->getOEmbedResult($uri);
     }
