@@ -14,7 +14,7 @@ class TwitterTest extends TestCase
     public function testProvider(): void
     {
         $result = $this->getOEmbedResult(
-            'https://twitter.com/michelecrossing/status/1184295636637749248'
+            'https://twitter.com/Interior/status/507185938620219395'
         );
 
         TestCase::assertEquals(RichResult::TYPE, $result->getType());

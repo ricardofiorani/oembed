@@ -11,14 +11,14 @@ class FacebookTest extends TestCase
 
     public function testVideo(): void
     {
-        $result = $this->getOEmbedResult('https://www.facebook.com/FacebookDeutschland/videos/2403439749688130/');
+        $result = $this->getOEmbedResult('https://www.facebook.com/zuck/videos/10112048862145471');
 
         self::assertEquals('video', $result->getType());
     }
 
     public function testPost(): void
     {
-        $result = $this->getOEmbedResult('https://www.facebook.com/deutschland.de/posts/10157828150787351');
+        $result = $this->getOEmbedResult('https://www.facebook.com/zuck/posts/10112074198730751');
 
         self::assertEquals('rich', $result->getType());
     }
