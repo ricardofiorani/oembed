@@ -1,11 +1,9 @@
 # OEmbed
 [![Build Status](https://api.travis-ci.org/ricardofiorani/oembed.svg?branch=master)](http://travis-ci.org/ricardofiorani/oembed)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/packagist/php-v/ricardofiorani/php-legofy.svg)](https://php.net/)
 [![License](https://poser.pugx.org/ricardofiorani/oembed/license.png)](https://packagist.org/packages/ricardofiorani/oembed)
 [![Total Downloads](https://poser.pugx.org/ricardofiorani/oembed/d/total.png)](https://packagist.org/packages/ricardofiorani/oembed)
 [![Coding Standards](https://img.shields.io/badge/cs-PSR--4-yellow.svg)](https://github.com/php-fig-rectified/fig-rectified-standards)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ricardofiorani/oembed/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ricardofiorani/oembed/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/ricardofiorani/oembed/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ricardofiorani/oembed/?branch=master)
 
 OEmbed is a PHP library to assist you retrieving data from providers that supports OEmbed.  
 It was built to be a successor of `ricardofiorani/php-video-url-parser`.
@@ -34,7 +32,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 $service = new OEmbed();
 
-$uri = new Uri('https://www.facebook.com/FacebookDeutschland/videos/2403439749688130/');
+$uri = new Uri('https://www.dailymotion.com/video/x804zfb?playlist=x6ymns');
 
 $result = $service->get(
     $uri,
@@ -49,10 +47,10 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 ## Services supported (and tested)
 - Dailymotion
 - Deviantart.com
-- Facebook
+- Facebook*
 - Gfycat
 - Giphy
-- Instagram
+- Instagram*
 - Kickstarter
 - Meetup
 - Me.me
@@ -63,7 +61,10 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - Twitter
 - Vimeo
 - Youtube
-   
+
+> *Facebook and Instagram requires authentication  
+> Please see https://developers.facebook.com/docs/instagram/oembed  
+> Also please see the example at the bottom of this doc 
 ## Services supported but not tested
 - 23HQ
 - Abraia
@@ -306,4 +307,28 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 
 
 ## Currently Supported PHP Versions
-* PHP 7.4
+* PHP 7.4 || PHP 8.0
+
+## Facebook and Instagram requiring authentication
+Yeah I know, it sucks having to create an FB app and generate a token.  
+
+Anyway, there is two ways (maybe more but I can only think of two now) of making this lib work with FB and IG.
+
+### Method 1
+You make a custom HTTP client (implementing `\Psr\Http\Client\ClientInterface`) and instructs it to retrieve the token following Facebook guidelines.
+
+### Method 2
+Easier way, you just send your Application ID and Secret as an extra parameter to the endpoint and that's it.
+
+```php
+$service = new OEmbed();
+
+$uri = new Uri('https://www.facebook.com/FacebookDeutschland/videos/2403439749688130/');
+
+$result = $service->get(
+    $uri,
+    480,
+    300,
+    ['access_token' => `{$appId}|{$appSecret}`]
+);
+```

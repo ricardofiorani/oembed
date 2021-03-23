@@ -5,6 +5,7 @@ namespace RicardoFiorani\OEmbed\Provider\Factory;
 use Psr\Http\Message\UriInterface;
 use RicardoFiorani\OEmbed\Config\ConfigLoader;
 use RicardoFiorani\OEmbed\Exception\VideoServiceNotFoundException;
+use RicardoFiorani\OEmbed\Provider\Endpoint\Adapter\RequiresFacebookTokenEndpoint;
 use RicardoFiorani\OEmbed\Provider\Endpoint\Adapter\SlashEndingEndpoint;
 use RicardoFiorani\OEmbed\Provider\Endpoint\Adapter\SlashlessEndingEndpoint;
 use RicardoFiorani\OEmbed\Provider\Endpoint\EndpointInterface;
@@ -93,7 +94,7 @@ class ProviderFactory
     {
         $schemes = (array) ($providerConfig['endpoint_used']['schemes'] ?? null);
         $endpointUrl = $providerConfig['endpoint_used']['url'];
-        $discovery = (bool)($providerConfig['endpoint_used']['discovery'] ?? null);
+        $isDiscovery = (bool)($providerConfig['endpoint_used']['discovery'] ?? null);
 
         switch (true) {
             case in_array(
@@ -104,7 +105,7 @@ class ProviderFactory
                 return new SlashEndingEndpoint(
                     $schemes,
                     $endpointUrl,
-                    $discovery
+                    $isDiscovery
                 );
             case in_array(
                 $providerConfig['provider_name'],
@@ -114,13 +115,23 @@ class ProviderFactory
                 return new SlashlessEndingEndpoint(
                     $schemes,
                     $endpointUrl,
-                    $discovery
+                    $isDiscovery
+                );
+            case in_array(
+                $providerConfig['provider_name'],
+                RequiresFacebookTokenEndpoint::PROVIDER_COMPATIBILITY_LIST,
+                false
+            ):
+                return new RequiresFacebookTokenEndpoint(
+                    $schemes,
+                    $endpointUrl,
+                    $isDiscovery
                 );
             default:
                 return new GenericEndpoint(
                     $schemes,
                     $endpointUrl,
-                    $discovery
+                    $isDiscovery
                 );
         }
     }

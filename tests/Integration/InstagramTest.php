@@ -12,7 +12,8 @@ class InstagramTest extends TestCase
 
     public function testProvider(): void
     {
-        $result = $this->getOEmbedResult('https://www.instagram.com/p/B2anRWMlz57/');
+        $accessToken = getenv('FB_TOKEN');
+        $result = $this->getOEmbedResult('https://www.instagram.com/p/B2anRWMlz57/', $accessToken);
 
         TestCase::assertEquals(RichResult::TYPE, $result->getType());
     }

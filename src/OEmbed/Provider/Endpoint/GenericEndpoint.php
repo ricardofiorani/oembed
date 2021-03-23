@@ -7,13 +7,13 @@ class GenericEndpoint implements EndpointInterface
     private const DEFAULT_FORMAT = 'json';
     private array $schemes;
     private string $url;
-    private bool $discovery;
+    private bool $isDiscovery;
 
-    public function __construct(array $schemes, string $url, bool $discovery = false)
+    public function __construct(array $schemes, string $url, bool $isDiscovery = false)
     {
         $this->schemes = $schemes;
         $this->url = $this->makeUrl($url);
-        $this->discovery = $discovery;
+        $this->isDiscovery = $isDiscovery;
     }
 
     public function getSchemes(): array
@@ -28,7 +28,7 @@ class GenericEndpoint implements EndpointInterface
 
     public function isDiscovery(): bool
     {
-        return $this->discovery;
+        return $this->isDiscovery;
     }
 
     private function makeUrl(string $url): string

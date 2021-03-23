@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "php": "^7.4",
+    "php": "^7.4 || ^8.0",
     "psr/http-message": "^1.0",
     "php-http/discovery": "^1.7",
     "psr/http-factory": "^1.0",
@@ -21,7 +21,7 @@
     "phpunit/phpunit": "^8.4",
     "php-http/guzzle6-adapter": "^2",
     "http-interop/http-factory-guzzle": "^1.0",
-    "phpstan/phpstan": "^0.11.16"
+    "phpstan/phpstan": "^0.12.82"
   },
   "autoload": {
     "psr-4": {
