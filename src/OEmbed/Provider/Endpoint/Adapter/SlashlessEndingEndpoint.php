@@ -10,10 +10,10 @@ class SlashlessEndingEndpoint extends GenericEndpoint
         'Spotify',
     ];
 
-    public function __construct(array $schemes, string $url, bool $discovery = false)
+    public function __construct(array $schemes, string $url, bool $isDiscovery = false)
     {
         $url = $this->makeUrl($url);
-        parent::__construct($schemes, $url, $discovery);
+        parent::__construct($schemes, $url, $isDiscovery);
     }
 
     private function makeUrl(string $url): string
