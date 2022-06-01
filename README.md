@@ -1,5 +1,5 @@
 # OEmbed
-[![Build Status](https://api.travis-ci.org/ricardofiorani/oembed.svg?branch=master)](http://travis-ci.org/ricardofiorani/oembed)
+![Build Status](https://github.com/ricardofiorani/oembed/actions/workflows/ci.yml/badge.svg)
 [![Minimum PHP Version](https://img.shields.io/packagist/php-v/ricardofiorani/php-legofy.svg)](https://php.net/)
 [![License](https://poser.pugx.org/ricardofiorani/oembed/license.png)](https://packagist.org/packages/ricardofiorani/oembed)
 [![Total Downloads](https://poser.pugx.org/ricardofiorani/oembed/d/total.png)](https://packagist.org/packages/ricardofiorani/oembed)
@@ -306,7 +306,7 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 
 
 ## Currently Supported PHP Versions
-* PHP 7.4 || PHP 8.0
+* PHP 7.4 || PHP 8.0 || PHP 8.1
 
 ## Facebook and Instagram requiring authentication
 Yeah I know, it sucks having to create an FB app and generate a token.  
