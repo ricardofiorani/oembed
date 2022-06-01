@@ -12,7 +12,7 @@ class MeetupTest extends TestCase
 
     public function testProvider(): void
     {
-        $result = $this->getOEmbedResult('https://www.meetup.com/Toptal-Sorocaba/events/265272220/');
+        $result = $this->getOEmbedResult('https://www.meetup.com/Berlin-PHP-Usergroup/events/283605098/');
 
         TestCase::assertEquals(RichResult::TYPE, $result->getType());
     }
