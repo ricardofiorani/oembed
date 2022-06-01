@@ -27,5 +27,3 @@ class FacebookTest extends TestCase
 //        self::assertEquals('rich', $result->getType());
     }
 }
-
-
