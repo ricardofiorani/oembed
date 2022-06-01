@@ -52,7 +52,6 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - Giphy
 - Instagram*
 - Kickstarter
-- Meetup
 - Me.me
 - Reddit
 - Soundcloud
