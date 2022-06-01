@@ -7,7 +7,6 @@ use RicardoFiorani\OEmbed\Provider\Endpoint\GenericEndpoint;
 class SlashlessEndingEndpoint extends GenericEndpoint
 {
     public const PROVIDER_COMPATIBILITY_LIST = [
-        'Spotify',
     ];
 
     public function __construct(array $schemes, string $url, bool $isDiscovery = false)
