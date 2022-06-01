@@ -306,7 +306,7 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 
 
 ## Currently Supported PHP Versions
-* PHP 7.4 || PHP 8.0
+* PHP 7.4 || PHP 8.0 || PHP 8.1
 
 ## Facebook and Instagram requiring authentication
 Yeah I know, it sucks having to create an FB app and generate a token.  
