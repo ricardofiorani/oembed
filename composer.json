@@ -21,7 +21,7 @@
     "phpunit/phpunit": "^8.4",
     "php-http/guzzle6-adapter": "^2",
     "http-interop/http-factory-guzzle": "^1.0",
-    "phpstan/phpstan": "^0.12.82"
+    "phpstan/phpstan": "^1.9.2"
   },
   "autoload": {
     "psr-4": {
