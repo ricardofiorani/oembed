@@ -10,18 +10,18 @@
   ],
   "require": {
     "php": "^7.4 || ^8.0 || ^8.1",
-    "psr/http-message": "^1.0",
+    "ext-json": "*",
     "php-http/discovery": "^1.7",
-    "psr/http-factory": "^1.0",
     "psr/http-client": "^1.0",
-    "ext-json": "*"
+    "psr/http-factory": "^1.0",
+    "psr/http-message": "^1.0 || ^2.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.5",
-    "phpunit/phpunit": "^8.4",
-    "php-http/guzzle6-adapter": "^2",
-    "http-interop/http-factory-guzzle": "^1.0",
-    "phpstan/phpstan": "^0.12.82"
+    "guzzlehttp/guzzle": "^7.9",
+    "php-http/guzzle7-adapter": "^1.1",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^11.5",
+    "squizlabs/php_codesniffer": "^3.5"
   },
   "autoload": {
     "psr-4": {
@@ -32,5 +32,11 @@
     "psr-4": {
       "RicardoFioraniTests\\": "tests/"
     }
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    },
+    "sort-packages": true
   }
 }
