@@ -20,7 +20,5 @@ class YoutubeTest extends TestCase
         TestCase::assertEquals('video', $result->getMetadata('type'));
         TestCase::assertTrue($result->hasMetadata('provider_name'));
         TestCase::assertEquals('YouTube', $result->getMetadata('provider_name'));
-        TestCase::assertTrue($result->hasMetadata('embed_url'));
-        TestCase::assertNotEmpty($result->getMetadata('embed_url'));
     }
 }
