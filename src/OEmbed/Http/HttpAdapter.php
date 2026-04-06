@@ -48,6 +48,7 @@ class HttpAdapter
 
     /**
      * @throws HttpAdapterException
+     * @return array<string, mixed>
      */
     public function getJsonResponseAsArray(string $method, string $uri): array
     {
@@ -72,15 +73,7 @@ STRING
             );
         }
 
-        try {
-            return json_decode($responseBody, true, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $exception) {
-            throw new HttpAdapterException(<<<STRING
-The request to {$uri} returned an malformed JSON together with the {$response->getStatusCode()} HTTP status code. 
-Maybe the provider doesn't support OEmbed anymore ?
-STRING
-                , $exception->getCode(), $exception);
-        }
+        return json_decode($responseBody, true, JSON_THROW_ON_ERROR);
     }
 
     public function getUriFactory(): UriFactoryInterface

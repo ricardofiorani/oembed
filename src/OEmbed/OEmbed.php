@@ -39,6 +39,7 @@ class OEmbed
 
     /**
      * @throws AbstractOEmbedException
+     * @param array<string, mixed> $extraParameters
      */
     public function get(
         UriInterface $uri,
@@ -52,6 +53,10 @@ class OEmbed
         return $this->resultFactory->build($provider, $uri, $parameters);
     }
 
+    /**
+     * @param array<string, mixed> $parameters
+     * @return array<string, mixed>
+     */
     private function mergeParameters(int $maxWidth = null, int $maxHeight = null, array $parameters = []): array
     {
         if (null !== $maxWidth) {

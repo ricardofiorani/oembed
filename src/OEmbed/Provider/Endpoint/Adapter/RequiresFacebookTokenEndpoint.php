@@ -11,6 +11,9 @@ class RequiresFacebookTokenEndpoint extends GenericEndpoint
         'Facebook'
     ];
 
+    /**
+     * @param array<string> $schemes
+     */
     public function __construct(array $schemes, string $url, bool $isDiscovery = false)
     {
         parent::__construct($schemes, $url, $isDiscovery);

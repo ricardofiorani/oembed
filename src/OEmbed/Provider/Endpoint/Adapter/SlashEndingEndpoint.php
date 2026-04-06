@@ -10,6 +10,9 @@ class SlashEndingEndpoint extends GenericEndpoint
         'me.me',
     ];
 
+    /**
+     * @param array<string> $schemes
+     */
     public function __construct(array $schemes, string $url, bool $isDiscovery = false)
     {
         $url = $this->makeUrl($url);

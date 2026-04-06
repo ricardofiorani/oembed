@@ -15,6 +15,7 @@ use RicardoFiorani\OEmbed\Provider\ProviderInterface;
 
 class ProviderFactory
 {
+    /** @var array<string, mixed> */
     private array $config = [];
     private ConfigLoader $configLoader;
 
@@ -35,6 +36,7 @@ class ProviderFactory
 
     /**
      * @throws VideoServiceNotFoundException
+     * @return array<string, mixed>
      */
     private function findProviderConfig(UriInterface $uri): array
     {
@@ -72,6 +74,9 @@ class ProviderFactory
         return "/{$pattern}/";
     }
 
+    /**
+     * @param array<string, mixed> $providerConfig
+     */
     private function buildFromArray(array $providerConfig): ProviderInterface
     {
         return new Provider(
@@ -81,6 +86,9 @@ class ProviderFactory
         );
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getConfig(): array
     {
         if (false === empty($this->config)) {
@@ -90,6 +98,9 @@ class ProviderFactory
         return $this->config = $this->configLoader->load();
     }
 
+    /**
+     * @param array<string, mixed> $providerConfig
+     */
     private function getEndpoint($providerConfig): EndpointInterface
     {
         $schemes = (array) ($providerConfig['endpoint_used']['schemes'] ?? null);

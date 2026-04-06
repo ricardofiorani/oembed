@@ -21,6 +21,7 @@ class ConfigLoader
 
     /**
      * @throws AbstractOEmbedException
+     * @return array<string, mixed>
      */
     public function load(): array
     {
@@ -34,6 +35,9 @@ class ConfigLoader
         );
     }
 
+    /**
+     * @return mixed
+     */
     private function loadFromFile()
     {
         return json_decode(DefaultConfig::DEFAULT_CONFIG, true);

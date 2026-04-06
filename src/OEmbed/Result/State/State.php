@@ -17,8 +17,12 @@ class State
     private ?string $thumbnailUrl;
     private ?int $thumbnailWidth;
     private ?int $thumbnailHeight;
+    /** @var array<string, mixed> */
     private array $extraMetadata;
 
+    /**
+     * @param array<string, mixed> $extraMetadata
+     */
     public function __construct(
         string $type,
         string $version,
