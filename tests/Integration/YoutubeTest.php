@@ -16,5 +16,9 @@ class YoutubeTest extends TestCase
 
         TestCase::assertInstanceOf(VideoResult::class, $result);
         TestCase::assertEquals('YouTube', $result->getProviderName());
+        TestCase::assertTrue($result->hasMetadata('type'));
+        TestCase::assertEquals('video', $result->getMetadata('type'));
+        TestCase::assertTrue($result->hasMetadata('provider_name'));
+        TestCase::assertEquals('YouTube', $result->getMetadata('provider_name'));
     }
 }
