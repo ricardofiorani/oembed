@@ -27,6 +27,7 @@ class ResultFactory
     /**
      * @throws InvalidResultTypeException
      * @throws HttpAdapterException
+     * @param array<string, mixed> $extraParameters
      */
     public function build(ProviderInterface $service, UriInterface $uri, array $extraParameters = []): ResultInterface
     {
@@ -39,6 +40,8 @@ class ResultFactory
      * TODO FIND OUT WHY REDIRECTS ARE NOT FOLLOWED
      *gi
      * @throws HttpAdapterException
+     * @param array<string, mixed> $extraParameters
+     * @return array<string, mixed>
      */
     private function fetchData(ProviderInterface $service, UriInterface $uri, array $extraParameters = []): array
     {
@@ -61,6 +64,7 @@ class ResultFactory
 
     /**
      * @throws InvalidResultTypeException
+     * @param array<string, mixed> $data
      */
     private function buildResultFromData(array $data): ResultInterface
     {

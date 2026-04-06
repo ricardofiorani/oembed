@@ -11,7 +11,7 @@ class FacebookTest extends TestCase
 
     public function testVideo(): void
     {
-        $this->markTestSkipped("Facebook doesn't that the O in Oembed stands for OPEN");
+        $this->markTestSkipped("Facebook doesn't knows that the O in Oembed stands for OPEN");
 //        $accessToken = getenv('FB_TOKEN');
 //        $result = $this->getOEmbedResult('https://www.facebook.com/zuck/videos/10112048862145471', $accessToken);
 //

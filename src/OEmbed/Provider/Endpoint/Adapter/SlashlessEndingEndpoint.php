@@ -9,6 +9,9 @@ class SlashlessEndingEndpoint extends GenericEndpoint
     public const PROVIDER_COMPATIBILITY_LIST = [
     ];
 
+    /**
+     * @param array<string> $schemes
+     */
     public function __construct(array $schemes, string $url, bool $isDiscovery = false)
     {
         $url = $this->makeUrl($url);

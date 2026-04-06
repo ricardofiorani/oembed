@@ -15,7 +15,7 @@ class RichResult extends AbstractResult
      * Even though the OEmbed format specifies for type "Rich" the width and height are REQUIRED,
      * Facebook doesn't comply so we null it in here :shrug:
      */
-    public function __construct(State $state, string $html, int $width = null, int $height = null)
+    public function __construct(State $state, string $html, ?int $width = null, ?int $height = null)
     {
         $this->setState($state);
         $this->html = $html;

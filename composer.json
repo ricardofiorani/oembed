@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "php": "^7.4 || ^8.0 || ^8.1",
+    "php": "^8.2 || ^8.3 || ^8.4 || ^8.5",
     "ext-json": "*",
     "php-http/discovery": "^1.7",
     "psr/http-client": "^1.0",

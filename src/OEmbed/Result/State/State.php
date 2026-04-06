@@ -17,20 +17,24 @@ class State
     private ?string $thumbnailUrl;
     private ?int $thumbnailWidth;
     private ?int $thumbnailHeight;
+    /** @var array<string, mixed> */
     private array $extraMetadata;
 
+    /**
+     * @param array<string, mixed> $extraMetadata
+     */
     public function __construct(
         string $type,
         string $version,
-        string $title = null,
-        string $authorName = null,
-        string $authorUrl = null,
-        string $providerName = null,
-        string $providerUrl = null,
-        string $cacheAge = null,
-        string $thumbnailUrl = null,
-        int $thumbnailWidth = null,
-        int $thumbnailHeight = null,
+        ?string $title = null,
+        ?string $authorName = null,
+        ?string $authorUrl = null,
+        ?string $providerName = null,
+        ?string $providerUrl = null,
+        ?string $cacheAge = null,
+        ?string $thumbnailUrl = null,
+        ?int $thumbnailWidth = null,
+        ?int $thumbnailHeight = null,
         array $extraMetadata = []
     ) {
         $this->type = $type;

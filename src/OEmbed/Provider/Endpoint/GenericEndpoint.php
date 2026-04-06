@@ -5,10 +5,14 @@ namespace RicardoFiorani\OEmbed\Provider\Endpoint;
 class GenericEndpoint implements EndpointInterface
 {
     private const DEFAULT_FORMAT = 'json';
+    /** @var array<string> */
     private array $schemes;
     private string $url;
     private bool $isDiscovery;
 
+    /**
+     * @param array<string> $schemes
+     */
     public function __construct(array $schemes, string $url, bool $isDiscovery = false)
     {
         $this->schemes = $schemes;
@@ -16,6 +20,9 @@ class GenericEndpoint implements EndpointInterface
         $this->isDiscovery = $isDiscovery;
     }
 
+    /**
+     * @return array<string>
+     */
     public function getSchemes(): array
     {
         return $this->schemes;

@@ -21,9 +21,9 @@ class OEmbed
     private ResultFactory $resultFactory;
 
     public function __construct(
-        ClientInterface $client = null,
-        RequestFactoryInterface $requestFactory = null,
-        UriFactoryInterface $uriFactory = null,
+        ?ClientInterface $client = null,
+        ?RequestFactoryInterface $requestFactory = null,
+        ?UriFactoryInterface $uriFactory = null,
         bool $performanceMode = true
     ) {
         $client = $client ?? Psr18ClientDiscovery::find();
@@ -39,11 +39,12 @@ class OEmbed
 
     /**
      * @throws AbstractOEmbedException
+     * @param array<string, mixed> $extraParameters
      */
     public function get(
         UriInterface $uri,
-        int $maxWidth = null,
-        int $maxHeight = null,
+        ?int $maxWidth = null,
+        ?int $maxHeight = null,
         array $extraParameters = []
     ): ResultInterface {
         $parameters = $this->mergeParameters($maxWidth, $maxHeight, $extraParameters);
@@ -52,7 +53,11 @@ class OEmbed
         return $this->resultFactory->build($provider, $uri, $parameters);
     }
 
-    private function mergeParameters(int $maxWidth = null, int $maxHeight = null, array $parameters = []): array
+    /**
+     * @param array<string, mixed> $parameters
+     * @return array<string, mixed>
+     */
+    private function mergeParameters(?int $maxWidth = null, ?int $maxHeight = null, array $parameters = []): array
     {
         if (null !== $maxWidth) {
             $parameters['maxwidth'] = $maxWidth;
