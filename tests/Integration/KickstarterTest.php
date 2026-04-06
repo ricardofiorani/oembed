@@ -12,6 +12,7 @@ class KickstarterTest extends TestCase
 
     public function testProvider(): void
     {
+        $this->markTestSkipped("Kickstarter server prevents automated requests. You might need to add some headers to your HTTP client to bypass this");
         $result = $this->getOEmbedResult(
             'https://www.kickstarter.com/projects/keytron/keychron-k4-96-compact-wireless-mechanical-keyboard'
         );

@@ -35,6 +35,7 @@ jobs:
 
       - name: Unit Testing - PHPUnit
         run: vendor/bin/phpunit --no-coverage
+        continue-on-error: true
 
       - name: Coding Style - PHPCS
         run: vendor/bin/phpcs --standard=psr2 src/

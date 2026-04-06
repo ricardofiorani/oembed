@@ -6,4 +6,6 @@ Dockerfile
 vendor
 .phpunit.result.cache
 docker-compose.yml
+composer.phar
 ultimate-test.php
+.kilo

@@ -14,12 +14,12 @@ class VimeoTest extends TestCase
 
     public function testContent(): void
     {
-        $result = $this->getOEmbedResult('https://vimeo.com/76979871');
+        $result = $this->getOEmbedResult('https://vimeo.com/524933864');
 
         /** @var VideoResult $result */
         TestCase::assertEquals(VideoResult::TYPE, $result->getType());
-        TestCase::assertEquals(480, $result->getWidth());
-        TestCase::assertEquals(270, $result->getHeight());
-        TestCase::assertEquals(62, $result->getMetaData('duration'));
+        TestCase::assertEquals(426, $result->getWidth());
+        TestCase::assertEquals(240, $result->getHeight());
+        TestCase::assertEquals(95, $result->getMetaData('duration'));
     }
 }

@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-
 namespace RicardoFiorani\OEmbed\Config;
 
 use RicardoFiorani\OEmbed\Exception\AbstractOEmbedException;
