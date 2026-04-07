@@ -36,7 +36,8 @@
   },
   "config": {
     "allow-plugins": {
-      "php-http/discovery": true
+      "php-http/discovery": true,
+      "infection/extension-installer": true
     },
     "sort-packages": true
   }
