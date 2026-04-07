@@ -21,7 +21,8 @@
     "php-http/guzzle7-adapter": "^1.1",
     "phpstan/phpstan": "^2.1",
     "phpunit/phpunit": "^11.5",
-    "squizlabs/php_codesniffer": "^3.5"
+    "squizlabs/php_codesniffer": "^3.5",
+    "infection/infection": "^0.29"
   },
   "autoload": {
     "psr-4": {

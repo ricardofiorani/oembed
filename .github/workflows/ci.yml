@@ -42,3 +42,7 @@ jobs:
 
       - name: Static Analysis - PHPStan
         run: vendor/bin/phpstan analyse src --level=6
+
+      - name: Mutation Testing - Infection
+        run: vendor/bin/infection --min-msi=80 --threads=4
+        continue-on-error: true
