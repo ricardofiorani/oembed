@@ -1,10 +1,6 @@
 <?php
-
+// phpcs:disable Generic.Files.LineLength.TooLong
 declare(strict_types=1);
-
-/**
- * @codingStandardsIgnoreFile
- */
 
 namespace RicardoFiorani\OEmbed\Config;
 
