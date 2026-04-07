@@ -17,7 +17,7 @@ $ composer require ricardofiorani/oembed
 ```
 
 ## Requirements
-* PHP 7.4
+* PHP 8.2, 8.3, 8.4, or 8.5
 * A PSR-18 implementation
 * A PSR-17 implementation of `RequestFactory` and `UriFactory` 
 
@@ -44,27 +44,64 @@ $result = $service->get(
 echo (string)$result; //will render the HTML (in case of "video" or "rich") or URL (in case of "photo")
 ```
 
-## Services supported (and tested)
+## Services tested and passing
+- Apple Podcasts
+- Balsamiq Cloud
+- Bluesky Social
+- Canva
+- CodeSandbox
 - Dailymotion
-- Deviantart.com
-- Facebook*
-- Gfycat
+- Datawrapper
+- DeviantArt
+- Figma
 - Giphy
-- Instagram*
-- Kickstarter
-- Me.me
+- iHeartRadio
+- Loom
+- Miro
+- MixCloud
+- Pinterest
+- Prezi Video
 - Reddit
+- Replit
+- Scribd
 - Soundcloud
 - Spotify
-- Twitch
+- TED
+- TikTok
+- Tumblr
 - Twitter
 - Vimeo
 - Youtube
+
+## Services tested but skipped
+- CodePen — Cloudflare blocks automated requests
+- ElevenLabs — Claims oEmbed support but no URL works
+- Facebook* — Requires authentication, blocks open access
+- Framer — No working URL found
+- Hulu — oEmbed support deprecated by provider
+- IFTTT — Service no longer works
+- Instagram* — Requires authentication, blocks open access
+- Kickstarter — Server blocks automated requests (custom headers needed)
+- Microsoft Stream — Requires authentication
+- Observable — oEmbed implementation appears broken
+- Rumble — Waiting for oembed.com provider list update
 
 > *Facebook and Instagram requires authentication  
 > Please see https://developers.facebook.com/docs/instagram/oembed  
 > Also please see the example at the bottom of this doc 
 ## Services supported but not tested
+These services from the former "tested" section have no integration test file:
+- Brightcove
+- Gfycat
+- Livestream
+- Me.me
+- Sketch
+- SlideShare
+- Twitch
+- Wistia
+- Wolfram Cloud
+- WordPress.com
+
 - 23HQ
 - Abraia
 - Adways
@@ -103,14 +140,12 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - CodeHS
 - Codepen
 - Codepoints
-- CodeSandbox
 - CollegeHumor
 - Commaful
 - Coub
 - Crowd Ranking
 - Cyrano Systems
 - Daily Mile
-- Datawrapper
 - Deseret News
 - Didacte
 - Digiteka
@@ -149,10 +184,7 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - hihaho
 - Homey
 - HuffDuffer
-- Hulu
 - iFixit
-- IFTTT
-- iHeartRadio
 - Indaco
 - Infogram
 - Infoveave
@@ -172,7 +204,6 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - Knowledge Pad
 - LearningApps.org
 - Lille.Pod
-- Livestream
 - Ludus
 - MathEmbed
 - Matterport
@@ -180,8 +211,6 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - Medienarchiv der Künste - Zürcher Hochschule der Künste
 - Mermaid Ink
 - Microlink
-- Microsoft Stream
-- MixCloud
 - Moby Picture
 - Modelo
 - MorphCast
@@ -220,20 +249,17 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - RadioPublic
 - RapidEngage
 - ReleaseWire
-- Replit
 - RepubHub
 - ReverbNation
 - RiffReporter
 - Roomshare
 - RoosterTeeth
-- Rumble
 - Runkit
 - Sapo Videos
 - Screen9
 - Screencast.com
 - Screenr
 - ScribbleMaps
-- Scribd
 - SendtoNews
 - ShortNote
 - Shoudio
@@ -241,7 +267,6 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - Simplecast
 - Sizzle
 - Sketchfab
-- SlideShare
 - SmashNotes
 - SmugMug
 - SocialExplorer
@@ -254,11 +279,9 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - StreamOneCloud
 - Sutori
 - Sway
-- TED
 - The New York Times
 - They Said So
 - TickCounter
-- TikTok
 - Toornament
 - Topy
 - Tuxx
@@ -290,11 +313,9 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 - Wave.video
 - wecandeo
 - Wiredrive
-- Wistia, Inc.
 - wizer.me
 - Wokwi
 - Wootled
-- WordPress.com
 - Xpression
 - Yes, I Know IT!
 - YFrog
@@ -306,7 +327,7 @@ echo (string)$result; //will render the HTML (in case of "video" or "rich") or U
 
 
 ## Currently Supported PHP Versions
-* PHP 7.4 || PHP 8.0 || PHP 8.1
+* PHP 8.2 || 8.3 || 8.4 || 8.5
 
 ## Facebook and Instagram requiring authentication
 Yeah I know, it sucks having to create an FB app and generate a token.  
