@@ -1,5 +1,5 @@
 # OEmbed
-![Build Status](https://github.com/ricardofiorani/oembed/actions/workflows/ci.yml/badge.svg)
+![Build Status](https://github.com/ricardofiorani/oembed/actions/workflows/ci.yml/badge.svg?branch=main)
 [![Minimum PHP Version](https://img.shields.io/packagist/php-v/ricardofiorani/oembed.svg)](https://php.net/)
 [![License](https://poser.pugx.org/ricardofiorani/oembed/license.png)](https://packagist.org/packages/ricardofiorani/oembed)
 [![Total Downloads](https://poser.pugx.org/ricardofiorani/oembed/d/total.png)](https://packagist.org/packages/ricardofiorani/oembed)
