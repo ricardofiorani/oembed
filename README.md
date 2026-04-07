@@ -1,6 +1,6 @@
 # OEmbed
 ![Build Status](https://github.com/ricardofiorani/oembed/actions/workflows/ci.yml/badge.svg)
-[![Minimum PHP Version](https://img.shields.io/packagist/php-v/ricardofiorani/php-legofy.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/packagist/php-v/ricardofiorani/oembed.svg)](https://php.net/)
 [![License](https://poser.pugx.org/ricardofiorani/oembed/license.png)](https://packagist.org/packages/ricardofiorani/oembed)
 [![Total Downloads](https://poser.pugx.org/ricardofiorani/oembed/d/total.png)](https://packagist.org/packages/ricardofiorani/oembed)
 [![Coding Standards](https://img.shields.io/badge/cs-PSR--4-yellow.svg)](https://github.com/php-fig-rectified/fig-rectified-standards)
