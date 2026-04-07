@@ -18,11 +18,11 @@
   },
   "require-dev": {
     "guzzlehttp/guzzle": "^7.9",
+    "infection/infection": "^0.29",
     "php-http/guzzle7-adapter": "^1.1",
     "phpstan/phpstan": "^2.1",
     "phpunit/phpunit": "^11.5",
-    "squizlabs/php_codesniffer": "^3.5",
-    "infection/infection": "^0.29"
+    "squizlabs/php_codesniffer": "^3.11"
   },
   "autoload": {
     "psr-4": {
