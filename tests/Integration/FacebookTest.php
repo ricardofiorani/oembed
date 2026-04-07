@@ -12,18 +12,19 @@ class FacebookTest extends TestCase
     public function testVideo(): void
     {
         $this->markTestSkipped("Facebook doesn't knows that the O in Oembed stands for OPEN");
-//        $accessToken = getenv('FB_TOKEN');
-//        $result = $this->getOEmbedResult('https://www.facebook.com/zuck/videos/10112048862145471', $accessToken);
-//
-//        self::assertEquals('video', $result->getType());
+        $accessToken = getenv('FB_TOKEN');
+        $result = $this->getOEmbedResult('https://www.facebook.com/zuck/videos/10112048862145471', $accessToken);
+
+        TestCase::assertEquals('video', $result->getType());
     }
 
     public function testPost(): void
     {
         $this->markTestSkipped("Facebook doesn't that the O in Oembed stands for OPEN");
-//        $accessToken = getenv('FB_TOKEN');
-//        $result = $this->getOEmbedResult('https://www.facebook.com/zuck/posts/10112074198730751', $accessToken);
-//
-//        self::assertEquals('rich', $result->getType());
+
+        $accessToken = getenv('FB_TOKEN');
+        $result = $this->getOEmbedResult('https://www.facebook.com/zuck/posts/10112074198730751', $accessToken);
+
+        TestCase::assertEquals('rich', $result->getType());
     }
 }
